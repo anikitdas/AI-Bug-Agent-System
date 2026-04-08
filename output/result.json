@@ -1,0 +1,32 @@
+{
+    "bug_summary": {
+        "summary": "Login fails when user enters correct credentials.",
+        "details": "Login fails when user enters correct credentials.\nExpected: successful login\nActual: application crashes\nEnvironment: Python 3.10",
+        "severity": "medium"
+    },
+    "evidence": {
+        "error": "AttributeError: 'NoneType' object has no attribute 'upper'",
+        "stack_trace": [
+            "UserService.login(UserService.java:45)"
+        ],
+        "raw_sample": "INFO: Starting application\nError: AttributeError: 'NoneType' object has no attribute 'upper'\nat UserService.login(UserService.java:45)\nRandom log line"
+    },
+    "reproduction": {
+        "status": "failed",
+        "script": "tools/repro_script.py",
+        "error": "'NoneType' object has no attribute 'upper'"
+    },
+    "fix_plan": {
+        "root_cause": "User object is None causing attribute error",
+        "patch_plan": "Add null check before calling methods on user",
+        "files_affected": [
+            "tools/repro_script.py"
+        ],
+        "validation": [
+            "Add unit test for null user",
+            "Run reproduction script again"
+        ],
+        "confidence": "high",
+        "review": "Fix is valid. Consider edge cases like empty input and invalid types."
+    }
+}

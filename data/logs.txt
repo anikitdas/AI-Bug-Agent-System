@@ -1,0 +1,4 @@
+INFO: Starting application
+Error: AttributeError: 'NoneType' object has no attribute 'upper'
+at UserService.login(UserService.java:45)
+Random log line

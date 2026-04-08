@@ -1,0 +1,4 @@
+Login fails when user enters correct credentials.
+Expected: successful login
+Actual: application crashes
+Environment: Python 3.10
